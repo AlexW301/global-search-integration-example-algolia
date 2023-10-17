@@ -10,6 +10,7 @@ export type AlgoliaItem = Readonly<{
   slug: string;
   collection: string;
   content: readonly ContentBlock[];
+  blogCategory?: string;
 }>;
 
 type ContentBlock = Readonly<{
