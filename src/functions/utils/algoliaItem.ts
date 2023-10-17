@@ -11,6 +11,7 @@ export type AlgoliaItem = Readonly<{
   collection: string;
   content: readonly ContentBlock[];
   blogCategory?: string;
+  experts?: any;
 }>;
 
 type ContentBlock = Readonly<{
