@@ -10,7 +10,7 @@ export type AlgoliaItem = Readonly<{
   slug: string;
   collection: string;
   content: readonly ContentBlock[];
-  blogCategory?: string;
+  insightCategory?: string;
   experts?: any;
   lastNameStartsWith?: string;
 }>;
@@ -42,7 +42,7 @@ export const convertToAlgoliaItem =
     objectID: createObjectId(item.system.codename, item.system.language),
     slug: item.elements.page_fields__slug.value,
     content: createRecordBlock(allItems, [], expectedSlug)(item),
-    ...(item.system.type === "blog" ? { blogCategory: item.elements.blog_category.value[0].name, experts: item.elements.authors.linkedItems.map((expert: any) => (expert.elements.full_name.value)) } : {}),
+    ...(item.system.type === "insight" ? { insightCategory: item.elements.insight_category.value[0].name, experts: item.elements.authors.linkedItems.map((expert: any) => (expert.elements.full_name.value)) } : {}),
     ...(item.system.type === "expert" ? { lastNameStartsWith: item.elements.last_name.value[0] ? item.elements.last_name.value[0] : "" } : {})
   });
 
