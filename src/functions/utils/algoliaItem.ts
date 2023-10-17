@@ -39,7 +39,7 @@ export const convertToAlgoliaItem =
     name: item.system.name,
     language: item.system.language,
     objectID: createObjectId(item.system.codename, item.system.language),
-    slug: Object.values(item.elements).find(el => el.type === ElementType.UrlSlug)?.value ?? "",
+    slug: item.elements.page_fields__slug.value,
     content: createRecordBlock(allItems, [], expectedSlug)(item),
     ...(item.system.type === "blog" ? { blogCategory: item.elements.blog_category.value[0].name, experts: item.elements.authors.linkedItems } : {})
   });
