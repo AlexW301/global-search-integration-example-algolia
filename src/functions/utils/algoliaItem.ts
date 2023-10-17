@@ -31,7 +31,7 @@ export const canConvertToAlgoliaItem = (expectedSlug: string) => (item: IContent
 const createObjectId = (itemCodename: string, languageCodename: string) => `${itemCodename}_${languageCodename}`;
 
 export const convertToAlgoliaItem =
-  (allItems: ReadonlyMap<string, IContentItem>, expectedSlug: string) => (item: IContentItem): AlgoliaItem => ({
+  (allItems: ReadonlyMap<string, IContentItem>, expectedSlug: string) => (item: any): AlgoliaItem => ({
     id: item.system.id,
     type: item.system.type,
     codename: item.system.codename,
