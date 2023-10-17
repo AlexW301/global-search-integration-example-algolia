@@ -10,7 +10,7 @@ export type AlgoliaItem = Readonly<{
   slug: string;
   collection: string;
   content: readonly ContentBlock[];
-  blogCategory?: any;
+  blogCategory?: string;
 }>;
 
 type ContentBlock = Readonly<{
@@ -40,7 +40,7 @@ export const convertToAlgoliaItem =
     objectID: createObjectId(item.system.codename, item.system.language),
     slug: Object.values(item.elements).find(el => el.type === ElementType.UrlSlug)?.value ?? "",
     content: createRecordBlock(allItems, [], expectedSlug)(item),
-    ...(item.system.type === "blog" ? { blogCategory: "item.elements.blogCategory" } : {})
+    ...(item.system.type === "blog" ? { blogCategory: item.elements.blogCategory.value[0].name } : {})
   });
 
 const createRecordBlock =
