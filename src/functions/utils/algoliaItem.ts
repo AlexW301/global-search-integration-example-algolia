@@ -43,7 +43,7 @@ export const convertToAlgoliaItem =
     objectID: createObjectId(item.system.codename, item.system.language),
     slug: item.elements.page_fields__slug.value,
     content: createRecordBlock(allItems, [], expectedSlug)(item),
-    includeInSearch: item.elements.pageFieldsIncludeInSearch.value[0].name,
+    includeInSearch: item.elements.page_fields__include_in_search.value[0].name,
     ...(item.system.type === "insight" ? { insightCategory: item.elements.insight_category.value[0].name, experts: item.elements.authors.linkedItems.map((expert: any) => (expert.elements.full_name.value)) } : {}),
     ...(item.system.type === "expert" ? { lastNameStartsWith: item.elements.last_name.value[0] ? item.elements.last_name.value[0] : "" } : {})
   });
